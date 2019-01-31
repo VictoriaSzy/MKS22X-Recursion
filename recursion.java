@@ -14,6 +14,12 @@ public class recursion{
     System.out.println("15562?  -->   " + sqrt(15562,0.01)) ; // should be around 124.7477... (probably near 124.8)
     System.out.println("-----------------------------------------------------------------") ;
     // Testing fibbonaci methods
+    System.out.println("Testing how the fibbonaci methods work!") ;
+    int[] test = {1,1,2,3,5,8,13,21,34,55} ;
+    for (int i = 0 ; i < 10 ; i++) {
+      System.out.println("The expected answer is: " + test[i]) ;
+      System.out.println("fib(" + i + ") = " + fib(i)) ;
+    }
 
   }
   /*Recursively find the sqrt using Newton's approximation
@@ -37,12 +43,19 @@ public class recursion{
   *precondition: n is non-negative
   */
   public static int fib(int n){
-
+    return fibHelper(n,1,1) ;
+  }
+  // helper function for finding the nth fibbonaci number using recursion to calculate terms before the nth term
+  public static int fibHelper(int n, int first, int next) {
+    if (n < 2) return next ;
+    else {
+      return fibHelper( n - 1 , next , first + next) ;
+    }
   }
 
   /*As Per classwork*/
-  public static ArrayList<Integer> makeAllSums(){
-    
-  }
+  //public static ArrayList<Integer> makeAllSums(){
+
+  //}
 
 }
