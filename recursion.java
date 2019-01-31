@@ -20,21 +20,29 @@ public class recursion{
       System.out.println("The expected answer is: " + test[i]) ;
       System.out.println("fib(" + i + ") = " + fib(i)) ;
     }
-
+    System.out.println("-----------------------------------------------------------------") ;
+    // Testing makeAllSums methods
+    System.out.println("Testing how the makeAllSums methods works!") ;
+    System.out.println("makeAllSums(1) should return: [0,1]") ;
+    System.out.println(makeAllSums(1)) ;
+    System.out.println("makeAllSums(2) should return: [0,1,2,3]") ;
+    System.out.println(makeAllSums(2)) ;
+    System.out.println("makeAllSums(3) should return: [0,1,2,3,3,4,5,6]") ;
+    System.out.println(makeAllSums(3)) ;
   }
   /*Recursively find the sqrt using Newton's approximation
   *tolerance is the allowed percent error the squared answer is away from n.
   *precondition: n is non-negative
   */
-  public static double sqrt(double n, double tolerance){
-    return h(n,tolerance,1) ;
+  public static double sqrt(double n, double tolerance) {
+    return sqH(n,tolerance,1) ;
   }
   // helper function for finding the square root
-  public static double h(double n, double percentError, double guess) {
+  public static double sqH(double n, double percentError, double guess) {
     guess = (n/guess + guess) / 2 ;
     if (guess*guess >= n - percentError*n && guess*guess <= n + percentError*n) return guess ;
     else {
-      return h(n, percentError, guess) ;
+      return sqH(n, percentError, guess) ;
     }
   }
 
@@ -42,7 +50,7 @@ public class recursion{
   *fib(0) = 1; fib(1) = 1; fib(5) = 5
   *precondition: n is non-negative
   */
-  public static int fib(int n){
+  public static int fib(int n) {
     return fibHelper(n,1,1) ;
   }
   // helper function for finding the nth fibbonaci number using recursion to calculate terms before the nth term
@@ -54,8 +62,24 @@ public class recursion{
   }
 
   /*As Per classwork*/
-  //public static ArrayList<Integer> makeAllSums(){
-
-  //}
-
+  public static ArrayList<Integer> makeAllSums(int n) {
+    return mSums(n,0) ;
+  }
+  public static ArrayList<Integer> mSums(int n, int sum) {
+    ArrayList<Integer> result = new ArrayList<Integer>() ;
+    if (n == 1) {
+      result.add(sum) ;
+      result.add(sum + n) ;
+    }
+    else {
+      // add the other possible sums
+      for (int i = 0 ; i < mSums(n-1,sum).size() ; i++) {
+        result.add(mSums(n-1,sum).get(i)) ;
+      }
+      for (int i  = 0 ; i < mSums(n - 1, sum + n).size() ; i++) {
+        result.add(mSums(n-1,sum+n).get(i)) ;
+      }
+    }
+    return result ;
+  }
 }
