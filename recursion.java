@@ -63,23 +63,17 @@ public class recursion{
 
   /*As Per classwork*/
   public static ArrayList<Integer> makeAllSums(int n) {
-    return mSums(n,0) ;
-  }
-  public static ArrayList<Integer> mSums(int n, int sum) {
     ArrayList<Integer> result = new ArrayList<Integer>() ;
-    if (n == 1) {
+    mSums(n, 0, result) ;
+    return result ;
+  }
+  public static void mSums(int n, int sum, ArrayList<Integer> result) {
+    if (n == 0) {
       result.add(sum) ;
-      result.add(sum + n) ;
     }
     else {
-      // add the other possible sums
-      for (int i = 0 ; i < mSums(n-1,sum).size() ; i++) {
-        result.add(mSums(n-1,sum).get(i)) ;
-      }
-      for (int i  = 0 ; i < mSums(n - 1, sum + n).size() ; i++) {
-        result.add(mSums(n-1,sum+n).get(i)) ;
-      }
+      mSums(n - 1, sum, result) ;
+      mSums(n - 1, sum + n, result) ;
     }
-    return result ;
   }
 }
