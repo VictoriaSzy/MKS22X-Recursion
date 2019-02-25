@@ -3,7 +3,7 @@ import java.io.* ;
 
 public class recursion{
   public static void main(String[] args) {
-    System.out.println("We are testing the fib function!") ;
+    /*System.out.println("We are testing the fib function!") ;
     for (int i = 0 ; i < 6 ; i++) {
       System.out.println("We are on index " + i) ;
       testFib(i) ;
@@ -13,7 +13,7 @@ public class recursion{
       System.out.println("We are on index " + i) ;
       testSqrt(i) ;
     }
-    /*System.out.println("-----------------------------------------------------------------") ;
+    System.out.println("-----------------------------------------------------------------") ;
     // Testing the square root methods
     System.out.println("Testing how the square root function works with Newton's Square Root Approximation!") ;
     System.out.println("Let's start testing!") ;
